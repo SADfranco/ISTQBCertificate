@@ -1,3 +1,35 @@
-<object data="./Certificate_88005_CTFL2018-RU_Shabaev.pdf"
+<!-- <object data="./Certificate_88005_CTFL2018-RU_Shabaev.pdf"
   type="application/pdf"
-  width="80%" height="720">не удалось показать документ</object>
+  width="80%" height="720">не удалось показать документ</object> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+  </head>
+  <body>
+    <canvas id="my_canvas"></canvas>
+    <script>
+      pdfjsLib.getDocument(./Certificate_88005_CTFL2018-RU_Shabaev.pdf).then(doc => {
+        console.log("This file has " + doc.pdfInfo.numPages + " pages");
+        
+        doc.getPages(1).then(page => {
+          var myCanvas = document.getElementById("my_canvas");
+          var context = myCanvas.getContext("2d");
+          
+          var viewport = page.getViewport(1);
+          myCanvas.width = viewport.width;
+          myCanvas.height = viewport.height;
+          
+          page.render({
+            canvasContext: context,
+            viewport: viewport
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+
