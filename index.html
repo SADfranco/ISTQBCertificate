@@ -10,7 +10,7 @@
   <body>
     <canvas id="my_canvas"></canvas>
     <script>
-      pdfjsLib.getDocument('.\Certificate_88005_CTFL2018-RU_Shabaev.pdf').then(doc => {
+      pdfjsLib.getDocument('./Certificate_88005_CTFL2018-RU_Shabaev.pdf').then(doc => {
         console.log("This file has " + doc._pdfInfo.numPages + " pages");
         
         doc.getPage(1).then(page => {
